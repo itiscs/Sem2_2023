@@ -85,6 +85,18 @@ namespace ListApp
             el.Next = null;
         }
 
+        public void AddElemAfter(T info, int k)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteElem(int k)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         public override string ToString()
         {
             var sb = new StringBuilder();   

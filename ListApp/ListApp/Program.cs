@@ -5,7 +5,6 @@ var lst = new MyList<int>();
 
 Console.WriteLine(lst.Count);
 
-
 for (int i = 0; i < 10; i++)
     lst.AddLast(i);
 
