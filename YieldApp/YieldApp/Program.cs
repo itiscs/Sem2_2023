@@ -1,12 +1,12 @@
 ﻿using YieldApp;
 
-MyClass cl = new MyClass(new int[] { 1,2,3,4,5,6,7,8,9});
+MyClass cl = new MyClass(new int[] { 21,2,3,14,5,6,7,8,9});
 
 foreach (var k in cl)
 {
     Console.WriteLine(k);
-    if (k == 4)
-        break;
+    //if (k == 4)
+    //    break;
 }
 
 foreach (var k in cl)

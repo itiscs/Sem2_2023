@@ -46,6 +46,49 @@ namespace YieldApp
         }
     }
 
+    public class PrimeEnumerator : IEnumerator<int>
+    {
+
+        List<int> mas = new List<int>();
+        int cur;
+
+        public PrimeEnumerator(int[] arr)
+        {
+            for(int i = 0; i < arr.Length; i++) 
+            {
+                if (arr[i] % 3 == 0)
+                    mas.Add(arr[i]);
+            }
+            cur = -1;
+        }
+
+
+        public int Current
+        {
+            get
+            {
+                return mas[cur];
+            }
+        }
+        object IEnumerator.Current => throw new NotImplementedException();
+
+        public void Dispose()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            cur++;
+            return cur < mas.Count;
+        }
+
+        public void Reset()
+        {
+            cur = -1;
+        }
+    }
+
 
 
     public class MyClass:IEnumerable<int>
@@ -61,7 +104,7 @@ namespace YieldApp
 
         public IEnumerator<int> GetEnumerator()
         {
-            return new MyEnumerator(mas);
+            return new PrimeEnumerator(mas);
             //yield return 0;
             //yield return 10;
             //yield return 20;
