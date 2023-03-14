@@ -38,6 +38,17 @@ namespace DelegateApp
 
         }
 
+        public T1 Aggr<T1>(Func<T1,T,T1> deleg)
+        {
+            T1 res = default(T1);
+
+            for (int i = 0; i < size; i++)
+                res = deleg(res, mas[i]);
+
+            return res;
+
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();   
