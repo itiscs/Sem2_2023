@@ -89,6 +89,8 @@ foreach (var st in st2.Where(s=>s.KolvoNeud > 2))
     Console.WriteLine(st);
 
 
+Console.WriteLine("*************************");
+
 
 var gr = studs.GroupBy(s => s.Group);
 
@@ -100,6 +102,7 @@ foreach (var g in gr)
 }
 
 
+Console.WriteLine("*************************");
 var gr2 = studs.GroupBy(s => s.Group).Select(g => 
                         new { Group = g.Key, Count = g.Count() });
 
