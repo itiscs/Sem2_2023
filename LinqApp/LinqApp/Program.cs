@@ -13,6 +13,14 @@ var l1 = lst.Where(k => k % 3 == 0 && k > 55);//.Skip(1);
 
 //lst.Intersect(new int[] { 3, 5, 6, 7, 8 });
 
+string s2 = "sfdgsfg fdsgdfg dfgdfh dfh dfh dfh df hdf hd";
+
+
+
+
+
+
+
 var s1 = strs.Where(s => s.Contains('v')).Where(s=>s.Length>5)
     .OrderByDescending(s => s.Length);
 
@@ -49,6 +57,54 @@ foreach (var p in p1)
 //    Console.WriteLine("no element");
 //else
 //    Console.WriteLine(p);
+
+
+var studs = new List<Student>();
+studs.Add(new Student() { Id = 1, Name = "Ivan", Group = "11-208",
+        Marks = new List<int> {5,5,2,4 }
+});
+studs.Add(new Student() { Id = 2, Name = "Petr", Group = "11-208",
+    Marks = new List<int> { 5, 5, 5, 4 }
+});
+studs.Add(new Student() { Id = 3, Name = "Maksim", Group = "11-208",
+    Marks = new List<int> { 2, 2, 2, 4 }
+});
+studs.Add(new Student() { Id = 4, Name = "Pavel", Group = "11-209",
+    Marks = new List<int> { 2, 3, 3, 4 }
+});
+studs.Add(new Student() { Id = 5, Name = "Anatoliy", Group = "11-209",
+    Marks = new List<int> { 3 }
+});
+
+
+var st2 = studs.Select(s => new
+{
+    s.Name,
+    AvgMarks = s.Marks.Average(),
+    KolvoNeud = s.Marks.Where(m => m == 2).Count(),
+    MaxMark = s.Marks.Max()
+});
+
+foreach (var st in st2.Where(s=>s.KolvoNeud > 2))
+    Console.WriteLine(st);
+
+
+
+var gr = studs.GroupBy(s => s.Group);
+
+foreach (var g in gr)
+{
+    Console.WriteLine($"{g.Key}  {g.Count()}:");
+    foreach (var s in g)
+        Console.WriteLine(s);
+}
+
+
+
+
+
+
+
 
 
 
