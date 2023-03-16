@@ -100,6 +100,16 @@ foreach (var g in gr)
 }
 
 
+var gr2 = studs.GroupBy(s => s.Group).Select(g => 
+                        new { Group = g.Key, Count = g.Count() });
+
+foreach (var g in gr2)
+{
+    Console.WriteLine(g);
+}
+
+
+
 
 
 
