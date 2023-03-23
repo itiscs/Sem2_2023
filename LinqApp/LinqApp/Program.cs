@@ -61,18 +61,46 @@ foreach (var p in p1)
 
 var studs = new List<Student>();
 studs.Add(new Student() { Id = 1, Name = "Ivan", Group = "11-208",
-        Marks = new List<int> {5,5,2,4 }
+       Semestr = 1, Marks = new List<int> {5,5,2,4 }
 });
 studs.Add(new Student() { Id = 2, Name = "Petr", Group = "11-208",
+    Semestr = 1,
     Marks = new List<int> { 5, 5, 5, 4 }
 });
 studs.Add(new Student() { Id = 3, Name = "Maksim", Group = "11-208",
-    Marks = new List<int> { 2, 2, 2, 4 }
+    Semestr = 1,
+    Marks = new List<int> { 2, 2, 2, 4, 3 }
+});
+studs.Add(new Student()
+{
+    Id = 1,
+    Name = "Ivan",
+    Group = "11-208",
+    Semestr = 2,
+    Marks = new List<int> { 5, 5}
+});
+studs.Add(new Student()
+{
+    Id = 2,
+    Name = "Petr",
+    Group = "11-208",
+    Semestr = 2,
+    Marks = new List<int> { 3, 3, 3 }
+});
+studs.Add(new Student()
+{
+    Id = 3,
+    Name = "Maksim",
+    Group = "11-208",
+    Semestr = 2,
+    Marks = new List<int> { 2, 2, 2, 4, 3 }
 });
 studs.Add(new Student() { Id = 4, Name = "Pavel", Group = "11-209",
+    Semestr = 1,
     Marks = new List<int> { 2, 3, 3, 4 }
 });
 studs.Add(new Student() { Id = 5, Name = "Anatoliy", Group = "11-209",
+    Semestr = 1,
     Marks = new List<int> { 3 }
 });
 
@@ -92,19 +120,36 @@ foreach (var st in st2.Where(s=>s.KolvoNeud > 2))
 Console.WriteLine("*************************");
 
 
-var gr = studs.GroupBy(s => s.Group);
+//var gr = studs.OrderByDescending(s=>s.Id).GroupBy(s => s.Group)
+//    .Where(g=>g.Key == "11-208");
 
-foreach (var g in gr)
-{
-    Console.WriteLine($"{g.Key}  {g.Count()}:");
-    foreach (var s in g)
-        Console.WriteLine(s);
-}
+//foreach (var g in gr)
+//{
+//    Console.WriteLine($"{g.Key}  {g.Count()}:");
+//    foreach (var s in g)
+//        Console.WriteLine(s);
+//}
 
 
 Console.WriteLine("*************************");
-var gr2 = studs.GroupBy(s => s.Group).Select(g => 
-                        new { Group = g.Key, Count = g.Count() });
+//var gr2 = studs.GroupBy(s => s.Group).Select(g =>
+//                        new { Group = g.Key, Count = g.Count(),
+//                        MaxMarks = g.Max(s1=>s1.Marks.Count),
+//                        GroupAv = g.Average(s1=>s1.Marks.Average())});
+
+//foreach (var g in gr2)
+//{
+//    Console.WriteLine(g);
+//}
+
+var gr2 = studs.GroupBy(s => new { s.Group, s.Semestr }).Select(g =>
+                        new {
+                            g.Key.Semestr,
+                            g.Key.Group,
+                            Count= g.Count(),
+                            MaxMarks = g.Max(s1 => s1.Marks.Count),
+                            GroupAv = g.Average(s1 => s1.Marks.Average())
+                        });
 
 foreach (var g in gr2)
 {

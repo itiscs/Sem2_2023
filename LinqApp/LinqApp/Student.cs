@@ -12,6 +12,8 @@ namespace LinqApp
         public string Name { get; set; }
         public string Group { get; set; }
 
+        public int Semestr { get; set; }
+
         public List<int> Marks { get; set; }
 
         public override string ToString()
