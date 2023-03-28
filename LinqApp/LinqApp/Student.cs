@@ -9,6 +9,7 @@ namespace LinqApp
     internal class Student
     {
         public int Id { get; set; }
+        public int DepartmentId { get; set; }
         public string Name { get; set; }
         public string Group { get; set; }
 
