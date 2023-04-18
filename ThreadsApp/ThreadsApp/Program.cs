@@ -73,7 +73,6 @@ t1 = DateTime.Now;
 //task4.Start();
 //task5.Start();
 
-
 Parallel.For(0, 50, SumArray);
 
 Task.WaitAll();
