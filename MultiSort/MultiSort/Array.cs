@@ -11,11 +11,14 @@ namespace MultiSort
         public int Length { get;}
         public int[] Arr { get; set; }
 
+        public int[] Temp { get; set; }
+
 
         public Array(int len)
         {
             Length = len;
             Arr = new int[len];
+            Temp = new int[len];
             Init();
         }
 
@@ -88,27 +91,27 @@ namespace MultiSort
 
         private void MergeArr(int k1, int k2, int k3)
         {
-            int[] mas = new int[k3 - k1];
+            //int[] mas = new int[k3 - k1];
             int l = k1;
             int m = k2;
-            for(int  i = 0; i < mas.Length; i++)
+            for(int  i = k1; i < k3; i++)
             {
                 if(l >= k2)
-                    mas[i] = Arr[m++];
+                    Temp[i] = Arr[m++];
                 else if (m >= k3)
-                    mas[i] = Arr[l++];
+                    Temp[i] = Arr[l++];
 
                 else  if (Arr[l] < Arr[m])
-                    mas[i] = Arr[l++];
+                    Temp[i] = Arr[l++];
                 else
-                    mas[i] = Arr[m++];
+                    Temp[i] = Arr[m++];
 
             }
 
-            for(int i = 0; i < mas.Length; i++)
+            for(int i = k1; i < k3; i++)
             {
                 //Console.Write($"{mas[i]} ");
-                Arr[k1 + i] = mas[i];
+                Arr[i] = Temp[i];
             }
             //Console.WriteLine();
         }

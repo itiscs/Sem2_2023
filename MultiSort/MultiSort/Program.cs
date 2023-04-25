@@ -4,20 +4,26 @@
     {
         static void Main(string[] args)
         {
-            //Array myArr = new Array(40000000);
 
-            //var t1 = DateTime.Now;
-            //myArr.Sort(1);
-            //Console.WriteLine(DateTime.Now - t1);
+            var n = 10000000;
+            var p = 2;
 
-            //Console.WriteLine(myArr.IsSorted(0, myArr.Length));
+            Console.WriteLine(n*Math.Log2(n));
 
-
-
-            Array myArr1 = new Array(40000);
+            Console.WriteLine((n/p) * Math.Log2(n/p) + Math.Log2(p)*n/2);
+           
+            Array myArr = new Array(n);
 
             var t1 = DateTime.Now;
-            myArr1.Sort(6);
+            myArr.Sort(1);
+            Console.WriteLine(DateTime.Now - t1);
+
+            Console.WriteLine(myArr.IsSorted(0, myArr.Length));
+
+            Array myArr1 = new Array(n);
+
+            t1 = DateTime.Now;
+            myArr1.Sort(p);
             Console.WriteLine(DateTime.Now - t1);
 
             Console.WriteLine(myArr1.IsSorted(0, myArr1.Length));
