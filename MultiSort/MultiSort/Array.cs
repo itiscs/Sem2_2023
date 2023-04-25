@@ -6,27 +6,25 @@ using System.Threading.Tasks;
 
 namespace MultiSort
 {
-    public class Array
+    public class Array<T> where T:IComparable
     {
         public int Length { get;}
-        public int[] Arr { get; set; }
+        public T[] Arr { get; set; }
 
-        public int[] Temp { get; set; }
+        public T[] Temp { get; set; }
 
 
         public Array(int len)
         {
             Length = len;
-            Arr = new int[len];
-            Temp = new int[len];
-            Init();
+            Arr = new T[len];
+            Temp = new T[len];
         }
 
-        private void Init()
+        public void Init(Func<T> initElem)
         {
-            Random r = new Random();
-            for(int i = 0; i < Length; i++)
-                Arr[i] = r.Next(-100,100);
+            for (int i = 0; i < Length; i++)
+                Arr[i] = initElem ();
         }
 
         public override string ToString()
@@ -50,7 +48,7 @@ namespace MultiSort
         public bool IsSorted(int k1, int k2)
         {
             for(int i = k1; i < k2 - 1; i++)
-                if (Arr[i] > Arr[i+1])
+                if (Arr[i].CompareTo(Arr[i+1]) > 0 )
                     return false;
             return true;
 
@@ -101,7 +99,7 @@ namespace MultiSort
                 else if (m >= k3)
                     Temp[i] = Arr[l++];
 
-                else  if (Arr[l] < Arr[m])
+                else  if (Arr[l].CompareTo(Arr[m]) < 0)
                     Temp[i] = Arr[l++];
                 else
                     Temp[i] = Arr[m++];
