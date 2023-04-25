@@ -6,7 +6,7 @@
         {
 
             var n = 10000000;
-            var p = 2;
+            var p = 4;
 
             Console.WriteLine(n*Math.Log2(n));
 
