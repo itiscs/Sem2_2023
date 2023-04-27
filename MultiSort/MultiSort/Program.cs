@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
 
-            var n = 1000;
-            var p = 4;
+            var n = 40000000;
+            var p = 2;
 
             Console.WriteLine(n*Math.Log2(n));
 
