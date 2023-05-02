@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SerializeApp
 {
-    [Serializable]
+    //[Serializable]
     public class Product
     {
-         
+
         public int ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -20,6 +20,14 @@ namespace SerializeApp
         public override string ToString()
         {
             return $"Товар {ProductId} - {Name} {Price} {Count}";
+        }        
+            
+        public void WriteToBinWriter(BinaryWriter writer)
+        {
+            writer.Write(ProductId);
+            writer.Write(Name);
+            writer.Write(Price);
+            writer.Write(Count);
         }
 
     }
